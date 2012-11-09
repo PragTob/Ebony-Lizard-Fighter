@@ -13,6 +13,7 @@
         _gy: 0,
         _falling: true,
         _anti: null,
+        _deltaX: 0,
 
         init: function () {
             this.requires("2D");
@@ -103,7 +104,6 @@
             if (hit) { //stop falling if found
                 if (this._falling) this.stopFalling(hit);
             } else {
-                if (this._falling === false) console.log("starting to fall");
                 this._falling = true; //keep falling otherwise
             }
         },
@@ -196,6 +196,8 @@ Crafty.c("PlatformerControls", {
             }
         }).bind("KeyDown", function () {
             if (this.isDown("UP_ARROW") || this.isDown("W") || this.isDown("Z")) this._up = true;
+        }).bind("Moved", function(oldpos) {
+            this._deltaX = this._x - oldpos.x;
         });
 
         return this;
