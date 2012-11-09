@@ -14,6 +14,7 @@
         _falling: true,
         _anti: null,
         _deltaX: 0,
+        _deltaY: 0,
 
         init: function () {
             this.requires("2D");
@@ -73,6 +74,7 @@
                 //if falling, move the players Y
                 this._gy += this._gravityConst;
                 this.y += this._gy;
+                this._deltaY += this._gy;
             } else {
                 this._gy = 0; //reset change in y
             }
@@ -106,6 +108,9 @@
             } else {
                 this._falling = true; //keep falling otherwise
             }
+
+            this._deltaX = 0;
+            this._deltaY = 0;
         },
 
         stopFalling: function (e) {
@@ -192,6 +197,7 @@ Crafty.c("PlatformerControls", {
             if (this.disableControls) return;
             if (this._up) {
                 this.y -= jump;
+                this._deltaY = -jump;
                 this._falling = true;
             }
         }).bind("KeyDown", function () {
