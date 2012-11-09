@@ -43,17 +43,17 @@
     // Player component    
     Crafty.c('Player', {
         init: function () {
-            this.requires('Renderable, Twoway, ViewportBounded, Collision, Gravity')
+            this.requires('Renderable, ViewportBounded, Collision, PlatformerGravity, PlatformerControls')
                 // set sprite
                 .spriteName('man')
                 // set starting position
                 .attr({ x: 100, y: 200 })
-                // set 'twoway' platform-style controller up with walk + jump speeds
-                .twoway(5, 8)
+                // set platform-style controller up with walk + jump speeds
+                .platformerControls(5, 8)
                 // enable gravity, stop when we hit 'Platform' components
-                .gravity('Platform')
-                // a custom collision map
-                .collision(new Crafty.polygon([0, 0], [0, 100], [50, 100], [50, 0]));
+                .platformerGravity('Platform')
+                // enable collision (not used by platformer gravity/controls but would be useful for other things)
+                .collision();
 
             // bind our movement handler to keep us within the Viewport
             this.bind('Moved', function (oldPosition) {
