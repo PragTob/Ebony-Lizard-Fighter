@@ -98,7 +98,7 @@
         init: function(){
             this.requires("Renderable, SpriteAnimation")
                 .spriteName('lizard')
-                .animate('walk', 0, 0, 4)
+                .animate('walk', 0, 0, 3)
                 .animate('walk', 10, -1);
     }})
 
