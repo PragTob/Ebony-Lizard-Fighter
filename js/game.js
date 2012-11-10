@@ -43,9 +43,7 @@
     // Player component
     Crafty.c('Player', {
         init: function () {
-            this.requires('Renderable, ViewportBounded, Collision, PlatformerGravity, PlatformerControls')
-                // set sprite
-                .spriteName('lizard')
+            this.requires('Renderable, ViewportBounded, Collision, PlatformerGravity, PlatformerControls, Lizard')
                 // set starting position
                 .attr({ x: 100, y: 200 })
                 // set platform-style controller up with walk + jump speeds
@@ -144,7 +142,7 @@
     //
     Game.prototype.mainScene = function () {
         //create a player...
-        Crafty.e('Lizard').attr({x: 50, y: 50});
+        Crafty.e('Player');
 
         //This is the floor
         Crafty.e('Platform').attr({x: 0, y: 584, w: 1000, h: 16});
