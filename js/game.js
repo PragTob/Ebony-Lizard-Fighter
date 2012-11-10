@@ -114,7 +114,7 @@ var lizard =
         .attr({x: 50, y: 50})
         .animate('walk', 0, 0, 4);
 
-knight.animate('walk', 10, -1);
+            lizard.animate('walk', 10, -1);
 
             // jump to the main scene in half a second
             loading.delay(function () {
