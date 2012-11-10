@@ -1,4 +1,4 @@
-(function () {
+            (function () {
     //
     // Components
     //
@@ -40,12 +40,12 @@
         }
     });
 
-    // Player component    
+    // Player component
     Crafty.c('Player', {
         init: function () {
             this.requires('Renderable, ViewportBounded, Collision, PlatformerGravity, PlatformerControls')
                 // set sprite
-                .spriteName('man')
+                .spriteName('lizard')
                 // set starting position
                 .attr({ x: 100, y: 200 })
                 // set platform-style controller up with walk + jump speeds
@@ -66,7 +66,7 @@
                     this.flip()
                 } else if (direction.x < 0) {
                     this.unflip()
-                } 
+                }
             });
         }
     });
@@ -74,7 +74,7 @@
 
     //
     // Game loading and initialisation
-    //    
+    //
     var Game = function () {
             Crafty.scene('loading', this.loadingScene);
             Crafty.scene('main', this.mainScene);
@@ -107,9 +107,14 @@
 
         function onLoaded() {
             // set up sprites
-            Crafty.sprite('img/man.png', {
-                man: [0, 0, 50, 100]
-            });
+            Crafty.sprite(60, 'img/LizardSpriteSheet.png', { lizard: [0, 0] });
+
+var lizard =
+  Crafty.e("2D, DOM, SpriteAnimation, lizard")
+        .attr({x: 50, y: 50})
+        .animate('walk', 0, 0, 4);
+
+knight.animate('walk', 10, -1);
 
             // jump to the main scene in half a second
             loading.delay(function () {
@@ -127,7 +132,7 @@
 
         // list of images to load
         Crafty.load(
-        ['img/man.png'],
+        ['img/LizardSpriteSheet.png'],
         onLoaded, onProgress, onError);
 
     };
