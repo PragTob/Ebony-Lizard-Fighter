@@ -94,6 +94,14 @@
         });
     };
 
+    Crafty.c("Lizard", {
+        init: function(){
+            this.requires("Renderable, SpriteAnimation")
+                .spriteName('lizard')
+                .animate('walk', 0, 0, 4)
+                .animate('walk', 10, -1);
+    }})
+
     // A loading scene -- pull in all the slow things here and create sprites
     Game.prototype.loadingScene = function () {
         var loading = Crafty.e('2D, Canvas, Text, Delay');
@@ -105,16 +113,10 @@
         });
         loading.text('loading...');
 
+        Crafty.load(['img/LizardSpriteSheet.png'],onLoaded, onProgress, onError);
         function onLoaded() {
             // set up sprites
             Crafty.sprite(60, 'img/LizardSpriteSheet.png', { lizard: [0, 0] });
-
-var lizard =
-  Crafty.e("2D, DOM, SpriteAnimation, lizard")
-        .attr({x: 50, y: 50})
-        .animate('walk', 0, 0, 4);
-
-            lizard.animate('walk', 10, -1);
 
             // jump to the main scene in half a second
             loading.delay(function () {
@@ -142,7 +144,7 @@ var lizard =
     //
     Game.prototype.mainScene = function () {
         //create a player...
-        Crafty.e('Player');
+        Crafty.e('Lizard').attr({x: 50, y: 50});
 
         //This is the floor
         Crafty.e('Platform').attr({x: 0, y: 584, w: 1000, h: 16});
