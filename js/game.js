@@ -99,7 +99,7 @@
             this.requires("Renderable, SpriteAnimation")
                 .spriteName('lizard')
                 .animate('walk', 0, 0, 3)
-                .animate('walk', 10, -1);
+                .animate('walk', 20, -1);
     }})
 
     // A loading scene -- pull in all the slow things here and create sprites
